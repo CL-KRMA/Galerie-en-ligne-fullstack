@@ -1,0 +1,65 @@
+/*
+body {
+  margin: 0;
+  height: 100vh;
+  background: #2a2a2a;
+  color: #e0e0e0;       
+  font-family: 'Fira Code', monospace;
+}
+*/
+
+body {
+  background-image: url(assets/background/neige.jpg);
+  font-family: 'Fira Code', monospace;
+}
+
+header {
+  text-align: center;
+  border-bottom: solid 2px white;
+}
+header h1 {
+  text-align: center;
+}
+
+.promo {
+  text-align: center;
+}
+
+section {
+  flex-grow: 1;
+}
+footer {
+  border-top: solid 2px white;
+  text-align: center;
+  padding: 50px;
+}
+
+nav ul {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 50px;
+}
+
+nav ul li {
+  display: flex;
+  margin: 10px;
+}
+
+nav a {
+  font-size: 1.5em;
+}
+
+aside {
+  padding-bottom: 500px;
+}
+
+.mapage {
+  display: flex;
+  flex-direction: row;
+}
+
+.listeproduit {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
