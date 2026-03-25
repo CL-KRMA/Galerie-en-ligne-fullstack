@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ImageDetail from "./ImageDetail";
+import ImageDetail from "../components/ImageDetail.jsx";
 
 function ImageList() {
   const [images, setImages] = useState([]);

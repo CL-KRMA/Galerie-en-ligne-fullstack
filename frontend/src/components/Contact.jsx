@@ -1,9 +1,9 @@
 import React from "react";
-import "../../contact.css";
+import "../contact.css";
 
-import whatsappLogo from "../../../assets/logos/whatsapp.png";
-import telegramLogo from "../../../assets/logos/telegram.png";
-import githubLogo from "../../../assets/logos/github.png";
+import whatsappLogo from "../assets/logos/whatsapp.png";
+import telegramLogo from "../assets/logos/telegram.png";
+import githubLogo from "../assets/logos/github.png";
 
 export default function Contact() {
   return (

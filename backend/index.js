@@ -102,6 +102,6 @@ app.delete("/delete-image/:id", (req, res) => {
   res.json({ message: "Image supprimée avec succès", data: deleted[0] });
 });
 
-app.listen(PORT, ADDRESS,() => {
+app.listen(PORT, () => {
   console.log(`Serveur démarré sur http://${ADDRESS}:${PORT}`);
 });

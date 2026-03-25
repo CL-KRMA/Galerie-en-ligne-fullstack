@@ -1,56 +1,97 @@
-/*
-body {
-  margin: 0;
-  height: 100vh;
-  background: #2a2a2a;
-  color: #e0e0e0;       
-  font-family: 'Fira Code', monospace;
-}
-*/
-
-body {
-  background-image: url(assets/background/neige.jpg);
-  font-family: 'Fira Code', monospace;
-}
-
-header {
-  text-align: center;
-  border-bottom: solid 2px white;
-}
-header h1 {
-  text-align: center;
-}
-
-.promo {
-  text-align: center;
-}
-
-section {
-  flex-grow: 1;
-}
-footer {
-  border-top: solid 2px white;
-  text-align: center;
-  padding: 50px;
-}
-
-nav ul {
+.navbar {
   display: flex;
-  justify-content: flex-end;
-  padding-right: 50px;
+  justify-content: space-between; /* sépare centre et droite */
+  align-items: center;
+  /* background: linear-gradient(90deg, #4a90e2, #007aff); */
+  background: #1c1c1e;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-nav ul li {
+.nav-center {
   display: flex;
-  margin: 10px;
+  gap: 2rem;
+  justify-content: center;
+  flex: 1; /* occupe l’espace disponible pour rester centré */
 }
 
-nav a {
-  font-size: 1.5em;
+.nav-right {
+  display: flex;
+  gap: 1.5rem;
 }
 
-aside {
-  padding-bottom: 500px;
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.navbar a:hover {
+  color: #ffdd57;
+}
+
+.navbar a::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 0;
+  background: #ffdd57;
+  transition: width 0.3s ease;
+  margin: auto;
+}
+
+.navbar a:hover::after {
+  width: 100%;
+}
+
+/* Style pour le menu central */
+.nav-center a {
+  color: #ffffff;              /* texte blanc */
+  text-decoration: none;       /* pas de soulignement */
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;        /* espace autour du texte */
+  border-radius: 4px;          /* coins légèrement arrondis */
+  transition: all 0.3s ease;   /* animation fluide */
+  position: relative;
+}
+
+/* Effet au survol */
+.nav-center a:hover {
+  background-color: rgba(255, 221, 87, 0.2); /* fond jaune transparent */
+  color: #ffdd57;                            /* texte jaune */
+}
+
+/* Soulignement animé */
+.nav-center a::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 0;
+  background: #ffdd57;
+  transition: width 0.3s ease;
+  margin: auto;
+}
+
+.nav-center a:hover::after {
+  width: 100%;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+body {
+ /* background-image: url(assets/background/neige.jpg); */
+  font-family: 'Fira Code', monospace;
 }
 
 .mapage {
@@ -62,4 +103,41 @@ aside {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+/* Footer */
+footer {
+  background: #1c1c1e;
+  color: #f5f5f7;
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 20rem;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+}
+
+footer p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: #4a90e2;
+  text-decoration: none;
+  margin: 0 0.5rem;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #ffdd57;
+}
+
+/* Icônes sociales */
+footer .socials {
+  margin-top: 1rem;
+}
+
+footer .socials a {
+  display: inline-block;
+  margin: 0 0.5rem;
+  font-size: 1.2rem;
 }
