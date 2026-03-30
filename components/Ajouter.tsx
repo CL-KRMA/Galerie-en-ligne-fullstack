@@ -50,7 +50,12 @@ const Ajouter: React.FC = () => {
         // Réinitialiser le formulaire
         setFormData({ name: "", description: "", imageUrl: "" });
       } else {
-        alert("Erreur lors de l'envoi des données.");
+        const error = await response.json();
+        if (response.status === 401) {
+          alert("⛔ Vous devez être connecté pour ajouter une image");
+        } else {
+          alert(`Erreur: ${error.error || "Erreur lors de l'envoi des données"}`);
+        }
       }
     } catch (error) {
       console.error("Erreur réseau :", error);

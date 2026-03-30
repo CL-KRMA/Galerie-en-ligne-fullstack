@@ -1,5 +1,6 @@
-import { NextResponse } from "next/server";
-import clientPromise from "../../lib/mongodb";
+import { NextRequest, NextResponse } from "next/server";
+import clientPromise from "@/lib/mongodb";
+import { isAuthenticated, createUnauthorizedResponse } from "@/lib/auth";
 
 export async function GET() {
   try {
@@ -16,7 +17,12 @@ export async function GET() {
   }
 }
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
+  // ✅ Vérifier l'authentification
+  if (!isAuthenticated(req)) {
+    return createUnauthorizedResponse("Vous devez être connecté pour ajouter une image");
+  }
+
   try {
     const body = await req.json();
     const { name, description, imageUrl } = body;

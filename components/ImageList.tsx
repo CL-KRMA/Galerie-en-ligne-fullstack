@@ -28,17 +28,31 @@ const ImageList: React.FC = () => {
         prev.map((img) => (img._id === id ? { ...img, ...editData } : img))
       );
       setSelectedImage(null);
+      alert("Image modifiée avec succès!");
+    } else if (response.status === 401) {
+      alert("⛔ Vous devez être connecté pour modifier une image");
+    } else {
+      alert("Erreur lors de la modification de l'image");
     }
   };
 
   // Supprimer une image
   const handleDelete = async (id: string) => {
+    if (!confirm("Êtes-vous sûr de vouloir supprimer cette image?")) {
+      return;
+    }
+
     const response = await fetch(`/api/images/${id}`, {
       method: "DELETE",
     });
     if (response.ok) {
       setImages((prev) => prev.filter((img) => img._id !== id));
       setSelectedImage(null);
+      alert("Image supprimée avec succès!");
+    } else if (response.status === 401) {
+      alert("⛔ Vous devez être connecté pour supprimer une image");
+    } else {
+      alert("Erreur lors de la suppression de l'image");
     }
   };
 

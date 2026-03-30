@@ -1,9 +1,15 @@
-import { NextResponse } from "next/server";
-import clientPromise from "../../../lib/mongodb";
+import { NextRequest, NextResponse } from "next/server";
+import clientPromise from "@/lib/mongodb";
 import { ObjectId } from "mongodb";
+import { isAuthenticated, createUnauthorizedResponse } from "@/lib/auth";
 
 // 🔹 Modifier une image
-export async function PUT(req: Request, context: { params: Promise<{ id: string }> }) {
+export async function PUT(req: NextRequest, context: { params: Promise<{ id: string }> }) {
+  // ✅ Vérifier l'authentification
+  if (!isAuthenticated(req)) {
+    return createUnauthorizedResponse("Vous devez être connecté pour modifier une image");
+  }
+
   try {
     const { id } = await context.params; // ⚠️ on attend params
     const body = await req.json();
@@ -24,12 +30,17 @@ export async function PUT(req: Request, context: { params: Promise<{ id: string 
     return NextResponse.json({ message: "Image modifiée avec succès" });
   } catch (error) {
     console.error("Erreur PUT:", error);
-    return NextResponse.json({ error: "Erreur serveur" }, { status: 500 });
+    return NextResponse.json({ error: "Erreur lors de la modification de l'image" }, { status: 500 });
   }
 }
 
 // 🔹 Supprimer une image
-export async function DELETE(_req: Request, context: { params: Promise<{ id: string }> }) {
+export async function DELETE(req: NextRequest, context: { params: Promise<{ id: string }> }) {
+  // ✅ Vérifier l'authentification
+  if (!isAuthenticated(req)) {
+    return createUnauthorizedResponse("Vous devez être connecté pour supprimer une image");
+  }
+
   try {
     const { id } = await context.params; // ⚠️ on attend params
 
