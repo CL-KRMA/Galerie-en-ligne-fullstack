@@ -42,7 +42,7 @@ export default function Header() {
       <nav className="navbar">
         <div className="nav-center">
           <Link href="/">Accueil</Link>
-          <Link href="/liste">Liste D'images</Link>
+          <Link href="/liste">Liste d'images</Link>
           <Link href="/ajouter">Ajouter</Link>
           <Link href="/contact">Contact</Link>
         </div>
